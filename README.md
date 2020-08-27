@@ -42,7 +42,7 @@ Every time the user refresh the searchHome page, it will reload and read/get the
 ### Data Display
 - The searching results hide some information to be displayed on the page, like `id`, `matching_terms`. These data may be sensitive and will not be exposed to the user.
 
-- Instead of displaying a raw timestamp (e.g., 1996-12-19T16:39:57-08:00), the result shows a date (12/19/1992) which makes more readable and friendly.
+- Instead of displaying a raw timestamp (e.g., 1996-12-19T16:39:57-08:00), the result shows a date (12/19/1996) which makes more readable and friendly.
 
 
 ## Design
