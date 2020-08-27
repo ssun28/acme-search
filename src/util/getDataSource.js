@@ -22,19 +22,17 @@ async function readData(map) {
 
 function getDataSource() {
   const map = new Map();
-  // readData(map);
-  // console.log('value1:', map);
+
   return {
-    // loadData: readData(map),
     loadData: async () => await readData(map),
 
     getItem: (index) => {
       return map.get(index);
     },
 
+    // deep copy map
     getItems: () => {
       const res = new Map(map);
-      // console.log('value2:', res);
       return res;
     },
   }

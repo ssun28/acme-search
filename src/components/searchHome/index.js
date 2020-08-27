@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Form, Button } from 'semantic-ui-react';
-import './searchHome.css';
+import { Form, Button, List } from 'semantic-ui-react';
 import Data from '../../util/getDataSource';
+import ResultInfo from '../resultInfo';
+import './searchHome.css';
 
 class SearchHome extends Component {
   constructor(props) {
@@ -20,60 +20,15 @@ class SearchHome extends Component {
   async componentDidMount() {
     await Data.loadData();
     this.setState({ data: Data.getItems() });
-    console.log('value:', this.state.data);
-
-    // for(let [key, value] of this.state.data) {
-    //   console.log(`${key} = ${value}`);
-    //   for (let i of value) {
-    //     console.log('value:', i.title);
-    //   }
-    // }
   }
 
-  // componentWillMount() { 
-  //   axios.get('./data/calendar.json') // JSON File Path 
-  //     .then( response => {
-  //       console.log(response.data[Object.keys(response.data)[0]]);
-
-  //       const map = new Map();
-
-  //       const resData = response.data[Object.keys(response.data)[0]];
-
-  //       for (let info of resData) {
-  //         const matchingTerms = info.matching_terms;
-    
-  //         for (let term of matchingTerms) {
-  //           if (!map.has(term)) {
-  //             const infoArray = [];
-  //             map.set(term, infoArray);
-  //           }
-      
-  //           map.get(term).push(info);
-  //         }
-  //       }
-
-  //       for(let [key, value] of map) {
-  //         console.log(`${key} = ${value}`);
-  //         for (let i of value) {
-  //           console.log('value:', i.title);
-  //         }
-  //       }
-        
-  //       this.setState({ data: response.calendar });
-  //   }) 
-  //   .catch(function (error) { 
-  //     console.log(error); 
-  //   });
-  // }
-
   onSearchPress() {
-    const query = this.state.searchQuery.toLowerCase();
+    const query = this.state.searchQuery.trim().toLowerCase();
     if (!this.state.data.has(query)) {
       alert("No mathing data in the database now! Please try another query!");
     } else {
       const infoArray = this.state.data.get(query);
       this.setState({ searchResults: infoArray });
-      console.log('searchResults', infoArray);
     }
   }
 
@@ -109,6 +64,17 @@ class SearchHome extends Component {
             </Button>
           </Form.Field>
         </Form>
+        <div className="searchResults">
+          <List>
+            {this.state.searchResults.map(function(resultInfo, index){
+              return (
+                <List.Item key={index}>
+                  <ResultInfo resultInfo={resultInfo}/>
+                </List.Item>
+              );
+            })}
+          </List>
+        </div>
       </div>
     );
   }
