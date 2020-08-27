@@ -13,7 +13,7 @@ Each item has a `matching_terms` field, you could treat that as the set of query
 
 ACME Search allows you to get relevant search results from the data sources.
 
-The URL for preview is:
+The URL for preview is: https://master.d10zyecc0dns2o.amplifyapp.com/
 
 **Note:** Sponsor: A take-home project from Neeva
 
@@ -21,8 +21,8 @@ The URL for preview is:
 ## Contents
 
 - [Core Features](#core-features)
-  - [Search](#admin-web)
-  - [Dynamically update results as new data becomes available](#dynamically-update)
+  - [Search](#search)
+  - [Dynamically update results as new data becomes available](#dynamically-update-results-as-new-data-becomes-available)
   - [Data Display](#data-display)
 - [Design](#design)
 - [Data Sources](#data-sources)
@@ -52,7 +52,7 @@ Every time the user refresh the searchHome page, it will reload and read/get the
 
 
 ## Data Sources
-- Add attribite `category` in the data sources which will be easy for displaying category while showing the results.
+- Adding attribite `category` in the data sources which will be easy for displaying category while showing the results.
 
 - In the original data sources, there are some records shows `"last_contact": "2019-02-29"`, which is invalid date since there is no 02-29 on the year of 2019. So it has been replaced to `"last_contact": "2019-02-28"`.
 
@@ -65,6 +65,7 @@ Every time the user refresh the searchHome page, it will reload and read/get the
 
 ## Deployment
 
+Deploy and host through AWS Amplify: https://master.d10zyecc0dns2o.amplifyapp.com/
 
 ## Getting Started
 
